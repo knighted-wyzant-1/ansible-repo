@@ -1,13 +1,15 @@
-# - name: install cron job (ping-logging)
-#   cron:
-#     user: vagrant
-#     name: "ping-logging"
-#     minute: "*/1"
-#     job: "ping -c 3 10.0.0.21 | while read pong; do echo \"$(date): $pong\"; done > /var/log/ping.log"
+- name: install cron job (ping-logging)
+  cron:
+    user: vagrant
+    name: "ping-logging"
+    minute: "*/1"
+    job: "ping -c 3 10.0.0.21 | while read pong; do echo \"$(date): $pong\"; done > /var/log/ping.log"
+    state : absent
 
-# - name: install cron job (ansible-pull)
-#   cron:
-#     user: vagrant
-#     name: "vagrant provision"
-#     minute: "*/3"
-#     job: "/usr/bin/ansible-pull -o -U https://github.com/knighted-wyzant-1/ansible-repo.git > /var/log/ansible-pull.log"
+- name: install cron job (ansible-pull)
+  cron:
+    user: vagrant
+    name: "vagrant provision"
+    minute: "*/3"
+    job: "/usr/bin/ansible-pull -o -U https://github.com/knighted-wyzant-1/ansible-repo.git > /var/log/ansible-pull.log"
+    state : absent
