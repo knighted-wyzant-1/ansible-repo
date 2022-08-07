@@ -3,4 +3,4 @@
     user: vagrant
     name: "ping-logging"
     minute: "*/5"
-    job: "ping -c 3 192.168.60.6 | while read pong; do echo "$(date): $pong"; done > /var/log/ping.log"
+    job: "ping -c 3 192.168.60.6 | while read pong; do echo "$$(date): $pong"; done > /var/log/ping.log"
